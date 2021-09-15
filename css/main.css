@@ -1,3 +1,8 @@
+.table-container {
+    overflow: auto;
+    position: absolute;
+}
+
 .users-table {
     border-collapse: collapse;
     margin: 25px 0;
@@ -26,4 +31,12 @@
 
 .users-table tbody tr:last-of-type {
     border-bottom: thick solid #009879;
+}
+
+.additional-info {
+    position: fixed;
+    right: 15px;
+    min-width: 400px;
+    min-height: 300px;
+    border: thick solid #009879;
 }

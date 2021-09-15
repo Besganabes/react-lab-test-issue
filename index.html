@@ -13,26 +13,37 @@
 
 <body ng-app="reactIssueApp">
 <div ng-controller="reactIssueController" ng-init="init()">
-    <table class="users-table">
-        <thead>
-        <tr>
-            <td>ID</td>
-            <td>First name</td>
-            <td>Last name</td>
-            <td>Email</td>
-            <td>Phone</td>
-            <td>State</td>
-        </tr>
-        </thead>
-        <tr ng-repeat="user in users">
-            <td>{{user.id}}</td>
-            <td>{{user.firstName}}</td>
-            <td>{{user.lastName}}</td>
-            <td>{{user.email}}</td>
-            <td>{{user.phone}}</td>
-            <td>{{user.adress.state}}</td>
-        </tr>
-    </table>
+    <div class="table-container">
+        <table ng-if="users" class="users-table">
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>First name</td>
+                <td>Last name</td>
+                <td>Email</td>
+                <td>Phone</td>
+                <td>State</td>
+            </tr>
+            </thead>
+            <tr ng-repeat="user in users" ng-click="selectUser(user)">
+                <td>{{user.id}}</td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.phone}}</td>
+                <td>{{user.adress.state}}</td>
+            </tr>
+        </table>
+    </div>
+    <div ng-if="selectedUser" class="additional-info">
+        <p>Profile info:</p>
+        <p>Selected profile: {{selectedUser.firstName}} {{selectedUser.lastName}}</p>
+        <p>Description: {{selectedUser.description}}</p>
+        <p>Address: {{selectedUser.adress.streetAddress}}</p>
+        <p>City: {{selectedUser.adress.city}}</p>
+        <p>State: {{selectedUser.adress.state}}</p>
+        <p>Index: {{selectedUser.adress.zip}}</p>
+    </div>
 </div>
 </body>
 

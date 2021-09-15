@@ -2,6 +2,7 @@ reactIssueApp.controller("reactIssueController", function($scope, $http) {
 
     $scope.users = null;
     $scope.usersDataUrl = "https://itrex-react-lab-files.s3.eu-central-1.amazonaws.com/react-test-api.json";
+    $scope.selectedUser = null;
 
     $scope.init = function () {
         console.log("Initialization...");
@@ -17,5 +18,10 @@ reactIssueApp.controller("reactIssueController", function($scope, $http) {
             console.error(error.statusText);
         });
     };
+
+    $scope.selectUser = function (user) {
+        console.log("Select user call.");
+        $scope.selectedUser = user;
+    }
 
 });
