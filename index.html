@@ -5,10 +5,25 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/reactIssueApp.js"></script>
+    <script src="js/reactIssueController.js"></script>
 </head>
 
-<body>
+<body ng-app="reactIssueApp">
+<div ng-controller="reactIssueController" ng-init="init()">
+    <table>
+        <tr ng-repeat="user in users">
+            <td>{{user.id}}</td>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.phone}}</td>
+            <td>{{user.adress.state}}</td>
+        </tr>
+    </table>
+</div>
 </body>
 
 </html>
