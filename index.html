@@ -13,7 +13,17 @@
 
 <body ng-app="reactIssueApp">
 <div ng-controller="reactIssueController" ng-init="init()">
-    <table>
+    <table class="users-table">
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>First name</td>
+            <td>Last name</td>
+            <td>Email</td>
+            <td>Phone</td>
+            <td>State</td>
+        </tr>
+        </thead>
         <tr ng-repeat="user in users">
             <td>{{user.id}}</td>
             <td>{{user.firstName}}</td>
