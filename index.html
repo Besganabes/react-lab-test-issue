@@ -14,7 +14,8 @@
     <div class="toolbar">
         <input type="text" ng-model="searchString">
         <select ng-model="stateFilter">
-            <option ng-repeat="user in users | unique:'adress.state'" value="{{user.adress.state}}">
+            <option ng-repeat="user in users | unique: 'adress.state' | orderBy: 'adress.state'"
+                    value="{{user.adress.state}}">
                 {{user.adress.state}}
             </option>
         </select>
