@@ -11,7 +11,10 @@ reactIssueApp.controller("reactIssueController", function ($scope, $http) {
         users: [],
         currentPage: 1,
         usersPerPage: 20,
-        maxSize: 3
+        maxSize: 3,
+        leftNumButtonPage: 1,
+        middleNumButtonPage: 2,
+        rightNumButtonPage: 3
     };
 
     $scope.init = function () {
@@ -22,7 +25,12 @@ reactIssueApp.controller("reactIssueController", function ($scope, $http) {
             $scope.$watch("pagination.currentPage", function() {
                 let begin = ($scope.pagination.currentPage - 1) * $scope.pagination.usersPerPage;
                 let end = begin + $scope.pagination.usersPerPage;
+
                 $scope.pagination.users = $scope.users.slice(begin, end);
+
+                $scope.pagination.leftNumButtonPage = $scope.pagination.currentPage === Math.ceil($scope.users.length / $scope.pagination.usersPerPage) ? $scope.pagination.currentPage - 2 : $scope.pagination.currentPage === 1 ? 1 : $scope.pagination.currentPage - 1;
+                $scope.pagination.middleNumButtonPage = $scope.pagination.currentPage === Math.ceil($scope.users.length / $scope.pagination.usersPerPage) ? $scope.pagination.currentPage - 1 : $scope.pagination.currentPage > 1 ? $scope.pagination.currentPage : 2;
+                $scope.pagination.rightNumButtonPage = $scope.pagination.currentPage === 1 ? $scope.pagination.currentPage + 2 : $scope.pagination.currentPage === Math.ceil($scope.users.length / $scope.pagination.usersPerPage) ? $scope.pagination.currentPage : $scope.pagination.currentPage + 1;
             });
             console.log("Initialization sequence complete.");
         }, function (error) {

@@ -40,9 +40,9 @@
     <!-- Господи, прости... -->
     <div class="pagination">
         <button ng-disabled="pagination.currentPage == 1" ng-click="pagination.currentPage = pagination.currentPage - 1">Previous</button>
-        <button class="{{pagination.currentPage == 1 ? 'active' : ''}}">{{pagination.currentPage == Math.ceil(users.length / pagination.usersPerPage) ? pagination.currentPage - 2 :pagination.currentPage == 1 ? 1 : pagination.currentPage - 1}}</button>
-        <button class="{{pagination.currentPage > 1 && pagination.currentPage < Math.ceil(users.length / pagination.usersPerPage) ? 'active' : ''}}">{{pagination.currentPage == Math.ceil(users.length / pagination.usersPerPage) ? pagination.currentPage - 1 :pagination.currentPage > 1 ? pagination.currentPage : 2}}</button>
-        <button class="{{pagination.currentPage == Math.ceil(users.length / pagination.usersPerPage) ? 'active' : ''}}">{{pagination.currentPage == 1 ? pagination.currentPage + 2 : pagination.currentPage == Math.ceil(users.length / pagination.usersPerPage) ? pagination.currentPage : pagination.currentPage + 1}}</button>
+        <button class="{{pagination.currentPage === pagination.leftNumButtonPage ? 'active' : ''}}" ng-click="pagination.currentPage = pagination.leftNumButtonPage">{{pagination.leftNumButtonPage}}</button>
+        <button class="{{pagination.currentPage === pagination.middleNumButtonPage ? 'active' : ''}}" ng-click="pagination.currentPage = pagination.middleNumButtonPage">{{pagination.middleNumButtonPage}}</button>
+        <button class="{{pagination.currentPage === pagination.rightNumButtonPage ? 'active' : ''}}" ng-click="pagination.currentPage = pagination.rightNumButtonPage">{{pagination.rightNumButtonPage}}</button>
         <button ng-disabled="!(pagination.currentPage < Math.ceil(users.length / pagination.usersPerPage))" ng-click="pagination.currentPage = pagination.currentPage + 1">Next</button>
     </div>
     <div ng-if="selectedUser" class="additional-info flex">
