@@ -1,6 +1,8 @@
-.table-container {
-    overflow: auto;
-    position: absolute;
+.flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
 }
 
 .users-table {
@@ -34,9 +36,19 @@
 }
 
 .additional-info {
-    position: fixed;
-    right: 15px;
-    min-width: 400px;
-    min-height: 300px;
+    min-width: 725px;
     border: thick solid #009879;
+    font-family: sans-serif;
+}
+
+.additional-info p {
+    width: 100%;
+    text-align: center;
+    margin: 0 0 0 0;
+    padding: 5px 0 5px;
+    border-bottom: thin solid #dddddd;
+}
+
+.additional-info p:nth-of-type(even) {
+    background-color: #f3f3f3;
 }

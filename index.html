@@ -12,9 +12,8 @@
 </head>
 
 <body ng-app="reactIssueApp">
-<div ng-controller="reactIssueController" ng-init="init()">
-    <div class="table-container">
-        <table ng-if="users" class="users-table">
+<div ng-controller="reactIssueController" ng-init="init()" class="flex">
+    <table ng-if="users" class="users-table">
             <thead>
             <tr>
                 <td>ID</td>
@@ -34,9 +33,8 @@
                 <td>{{user.adress.state}}</td>
             </tr>
         </table>
-    </div>
-    <div ng-if="selectedUser" class="additional-info">
-        <p>Profile info:</p>
+    <div ng-if="selectedUser" class="additional-info flex">
+        <p style="font-weight: bold">Profile info:</p>
         <p>Selected profile: {{selectedUser.firstName}} {{selectedUser.lastName}}</p>
         <p>Description: {{selectedUser.description}}</p>
         <p>Address: {{selectedUser.adress.streetAddress}}</p>
