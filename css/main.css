@@ -20,7 +20,7 @@
 }
 
 .users-table th, .users-table td {
-    padding: 15px 15px;
+    padding: 10px 10px;
 }
 
 .users-table tbody tr {
@@ -35,16 +35,22 @@
     border-bottom: thick solid #009879;
 }
 
+.selected {
+    font-weight: bold;
+    color: #009879;
+}
+
 .additional-info {
-    min-width: 725px;
-    border: thick solid #009879;
     font-family: sans-serif;
+    min-width: 666px;
+    border: thick solid #009879;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 .additional-info p {
     width: 100%;
     text-align: center;
-    margin: 0 0 0 0;
+    margin: 0;
     padding: 5px 0 5px;
     border-bottom: thin solid #dddddd;
 }
@@ -52,3 +58,27 @@
 .additional-info p:nth-of-type(even) {
     background-color: #f3f3f3;
 }
+
+.pagination {
+    display: inline-block;
+    padding-bottom: 25px;
+}
+
+.pagination a {
+    font-family: sans-serif;
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: background-color .3s;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
