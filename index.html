@@ -14,10 +14,7 @@
     <div class="toolbar">
         <input type="text" ng-model="searchString">
         <select ng-model="stateFilter">
-            <option ng-repeat="user in users | unique: 'adress.state' | orderBy: 'adress.state'"
-                    value="{{user.adress.state}}">
-                {{user.adress.state}}
-            </option>
+            <option ng-repeat="user in users | unique: 'adress.state' | orderBy: 'adress.state'" value="{{user.adress.state}}">{{user.adress.state}}</option>
         </select>
     </div>
     <table ng-if="users" class="users-table">
@@ -42,7 +39,7 @@
     </table>
     <!-- Господи, прости... -->
     <div class="pagination">
-        <button ng-disabled="pagination.currentPage == 1" ng-click="pagination.currentPage = pagination.currentPage - 1">Prev</button>
+        <button ng-disabled="pagination.currentPage == 1" ng-click="pagination.currentPage = pagination.currentPage - 1">Previous</button>
         <button class="{{pagination.currentPage == 1 ? 'active' : ''}}">{{pagination.currentPage == Math.ceil(users.length / pagination.usersPerPage) ? pagination.currentPage - 2 :pagination.currentPage == 1 ? 1 : pagination.currentPage - 1}}</button>
         <button class="{{pagination.currentPage > 1 && pagination.currentPage < Math.ceil(users.length / pagination.usersPerPage) ? 'active' : ''}}">{{pagination.currentPage == Math.ceil(users.length / pagination.usersPerPage) ? pagination.currentPage - 1 :pagination.currentPage > 1 ? pagination.currentPage : 2}}</button>
         <button class="{{pagination.currentPage == Math.ceil(users.length / pagination.usersPerPage) ? 'active' : ''}}">{{pagination.currentPage == 1 ? pagination.currentPage + 2 : pagination.currentPage == Math.ceil(users.length / pagination.usersPerPage) ? pagination.currentPage : pagination.currentPage + 1}}</button>
