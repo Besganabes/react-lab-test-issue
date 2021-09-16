@@ -40,16 +40,13 @@
             <td>{{user.adress.state}}</td>
         </tr>
     </table>
+    <!-- Господи, прости... -->
     <div class="pagination">
-        <button ng-disabled="pagination.currentPage == 1"
-                ng-click="pagination.currentPage = pagination.currentPage - 1">Prev
-        </button>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button ng-disabled="!(pagination.currentPage < Math.ceil(users.length / pagination.usersPerPage))"
-                ng-click="pagination.currentPage = pagination.currentPage + 1">Next
-        </button>
+        <button ng-disabled="pagination.currentPage == 1" ng-click="pagination.currentPage = pagination.currentPage - 1">Prev</button>
+        <button class="{{pagination.currentPage == 1 ? 'active' : ''}}">{{pagination.currentPage == Math.ceil(users.length / pagination.usersPerPage) ? pagination.currentPage - 2 :pagination.currentPage == 1 ? 1 : pagination.currentPage - 1}}</button>
+        <button class="{{pagination.currentPage > 1 && pagination.currentPage < Math.ceil(users.length / pagination.usersPerPage) ? 'active' : ''}}">{{pagination.currentPage == Math.ceil(users.length / pagination.usersPerPage) ? pagination.currentPage - 1 :pagination.currentPage > 1 ? pagination.currentPage : 2}}</button>
+        <button class="{{pagination.currentPage == Math.ceil(users.length / pagination.usersPerPage) ? 'active' : ''}}">{{pagination.currentPage == 1 ? pagination.currentPage + 2 : pagination.currentPage == Math.ceil(users.length / pagination.usersPerPage) ? pagination.currentPage : pagination.currentPage + 1}}</button>
+        <button ng-disabled="!(pagination.currentPage < Math.ceil(users.length / pagination.usersPerPage))" ng-click="pagination.currentPage = pagination.currentPage + 1">Next</button>
     </div>
     <div ng-if="selectedUser" class="additional-info flex">
         <p style="font-weight: bold">Profile info:</p>
