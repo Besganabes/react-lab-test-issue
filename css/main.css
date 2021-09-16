@@ -9,8 +9,9 @@
     border-collapse: collapse;
     margin: 25px 0;
     font-family: sans-serif;
-    min-width: 400px;
+    min-width: 666px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border: thick solid #009879;
 }
 
 .users-table thead tr {
@@ -29,10 +30,6 @@
 
 .users-table tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
-}
-
-.users-table tbody tr:last-of-type {
-    border-bottom: thick solid #009879;
 }
 
 .selected {

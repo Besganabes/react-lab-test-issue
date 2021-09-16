@@ -10,49 +10,51 @@
     <script src="js/reactIssueApp.js"></script>
 </head>
 <body ng-app="reactIssueApp">
-<div ng-controller="reactIssueController" ng-init="init()" class="flex">
-    <div class="toolbar">
-        <input type="text" ng-model="searchString">
-        <select ng-model="stateFilter">
-            <option ng-repeat="user in users | unique: 'adress.state' | orderBy: 'adress.state'" value="{{user.adress.state}}">{{user.adress.state}}</option>
-        </select>
-    </div>
-    <table ng-if="users" class="users-table">
-        <thead>
-        <tr>
-            <td>ID</td>
-            <td>First name</td>
-            <td>Last name</td>
-            <td>Email</td>
-            <td>Phone</td>
-            <td>State</td>
-        </tr>
-        </thead>
-        <tr ng-repeat="user in pagination.users" ng-click="selectUser(user)">
-            <td>{{user.id}}</td>
-            <td>{{user.firstName}}</td>
-            <td>{{user.lastName}}</td>
-            <td>{{user.email}}</td>
-            <td>{{user.phone}}</td>
-            <td>{{user.adress.state}}</td>
-        </tr>
-    </table>
-    <!-- Господи, прости... -->
-    <div class="pagination">
-        <button ng-disabled="pagination.currentPage == 1" ng-click="pagination.currentPage = pagination.currentPage - 1">Previous</button>
-        <button class="{{pagination.currentPage === pagination.leftNumButtonPage ? 'active' : ''}}" ng-click="pagination.currentPage = pagination.leftNumButtonPage">{{pagination.leftNumButtonPage}}</button>
-        <button class="{{pagination.currentPage === pagination.middleNumButtonPage ? 'active' : ''}}" ng-click="pagination.currentPage = pagination.middleNumButtonPage">{{pagination.middleNumButtonPage}}</button>
-        <button class="{{pagination.currentPage === pagination.rightNumButtonPage ? 'active' : ''}}" ng-click="pagination.currentPage = pagination.rightNumButtonPage">{{pagination.rightNumButtonPage}}</button>
-        <button ng-disabled="!(pagination.currentPage < Math.ceil(users.length / pagination.usersPerPage))" ng-click="pagination.currentPage = pagination.currentPage + 1">Next</button>
-    </div>
-    <div ng-if="selectedUser" class="additional-info flex">
-        <p style="font-weight: bold">Profile info:</p>
-        <p>Selected profile: {{selectedUser.firstName}} {{selectedUser.lastName}}</p>
-        <p>Description: {{selectedUser.description}}</p>
-        <p>Address: {{selectedUser.adress.streetAddress}}</p>
-        <p>City: {{selectedUser.adress.city}}</p>
-        <p>State: {{selectedUser.adress.state}}</p>
-        <p>Index: {{selectedUser.adress.zip}}</p>
+<div ng-controller="reactIssueController" ng-init="init()">
+    <div ng-if="users" class="flex">
+        <div class="toolbar">
+            <input type="text" ng-model="searchString">
+            <select ng-model="stateFilter">
+                <option ng-repeat="user in users | unique: 'adress.state' | orderBy: 'adress.state'" value="{{user.adress.state}}">{{user.adress.state}}</option>
+            </select>
+        </div>
+        <table ng-if="users" class="users-table">
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>First name</td>
+                <td>Last name</td>
+                <td>Email</td>
+                <td>Phone</td>
+                <td>State</td>
+            </tr>
+            </thead>
+            <tr ng-repeat="user in pagination.users" ng-click="selectUser(user)">
+                <td>{{user.id}}</td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.phone}}</td>
+                <td>{{user.adress.state}}</td>
+            </tr>
+        </table>
+        <!-- Господи, прости... -->
+        <div class="pagination">
+            <button ng-disabled="pagination.currentPage == 1" ng-click="pagination.currentPage = pagination.currentPage - 1">Previous</button>
+            <button class="{{pagination.currentPage === pagination.leftNumButtonPage ? 'active' : ''}}" ng-click="pagination.currentPage = pagination.leftNumButtonPage">{{pagination.leftNumButtonPage}}</button>
+            <button class="{{pagination.currentPage === pagination.middleNumButtonPage ? 'active' : ''}}" ng-click="pagination.currentPage = pagination.middleNumButtonPage">{{pagination.middleNumButtonPage}}</button>
+            <button class="{{pagination.currentPage === pagination.rightNumButtonPage ? 'active' : ''}}" ng-click="pagination.currentPage = pagination.rightNumButtonPage">{{pagination.rightNumButtonPage}}</button>
+            <button ng-disabled="!(pagination.currentPage < Math.ceil(users.length / pagination.usersPerPage))" ng-click="pagination.currentPage = pagination.currentPage + 1">Next</button>
+        </div>
+        <div ng-if="selectedUser" class="additional-info flex">
+            <p><b>Profile info:</b></p>
+            <p><b>Selected profile:</b> {{selectedUser.firstName}} {{selectedUser.lastName}}</p>
+            <p><b>Description:</b> {{selectedUser.description}}</p>
+            <p><b>Address:</b> {{selectedUser.adress.streetAddress}}</p>
+            <p><b>City:</b> {{selectedUser.adress.city}}</p>
+            <p><b>State:</b> {{selectedUser.adress.state}}</p>
+            <p><b>Index:</b> {{selectedUser.adress.zip}}</p>
+        </div>
     </div>
 </div>
 </body>
