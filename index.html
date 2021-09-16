@@ -1,18 +1,24 @@
 <!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="css/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.8/angular-filter.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/reactIssueApp.js"></script>
-    <script src="js/reactIssueController.js"></script>
 </head>
-
 <body ng-app="reactIssueApp">
 <div ng-controller="reactIssueController" ng-init="init()" class="flex">
+    <div class="toolbar">
+        <input type="text" ng-model="searchString">
+        <select ng-model="stateFilter">
+            <option ng-repeat="user in users | unique:'adress.state'" value="{{user.adress.state}}">
+                {{user.adress.state}}
+            </option>
+        </select>
+    </div>
     <table ng-if="users" class="users-table">
         <thead>
         <tr>
@@ -24,7 +30,7 @@
             <td>State</td>
         </tr>
         </thead>
-        <tr ng-repeat="user in users" ng-click="selectUser(user)">
+        <tr ng-repeat="user in pagination.users" ng-click="selectUser(user)">
             <td>{{user.id}}</td>
             <td>{{user.firstName}}</td>
             <td>{{user.lastName}}</td>
@@ -34,11 +40,15 @@
         </tr>
     </table>
     <div class="pagination">
-        <a>Prev</a>
-        <a>1</a>
-        <a>2</a>
-        <a>3</a>
-        <a>Next</a>
+        <button ng-disabled="pagination.currentPage == 1"
+                ng-click="pagination.currentPage = pagination.currentPage - 1">Prev
+        </button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button ng-disabled="!(pagination.currentPage < Math.ceil(users.length / pagination.usersPerPage))"
+                ng-click="pagination.currentPage = pagination.currentPage + 1">Next
+        </button>
     </div>
     <div ng-if="selectedUser" class="additional-info flex">
         <p style="font-weight: bold">Profile info:</p>
@@ -51,5 +61,4 @@
     </div>
 </div>
 </body>
-
 </html>
