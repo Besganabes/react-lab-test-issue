@@ -38,7 +38,9 @@ reactIssueApp.controller("reactIssueController", function ($scope, $http) {
         });
     };
 
-    $scope.selectUser = function (user) {
+    $scope.selectUser = function ($event, user) {
+        Array.from(document.querySelectorAll(".selected")).forEach((element) => element.classList.remove("selected"));
+        $event.currentTarget.className = "selected";
         $scope.selectedUser = user;
     }
 });
