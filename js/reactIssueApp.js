@@ -1,4 +1,4 @@
-const reactIssueApp = angular.module("reactIssueApp", ['angular.filter']);
+const reactIssueApp = angular.module("reactIssueApp", ["angular.filter"]);
 
 reactIssueApp.controller("reactIssueController", function ($scope, $http) {
     $scope.Math = window.Math;
@@ -22,7 +22,7 @@ reactIssueApp.controller("reactIssueController", function ($scope, $http) {
         $http.get($scope.usersDataUrl).then(function (response) {
             $scope.users = response.data;
             $scope.pagination.users = $scope.users;
-            $scope.$watch("pagination.currentPage", function() {
+            $scope.$watch("pagination.currentPage", function () {
                 let begin = ($scope.pagination.currentPage - 1) * $scope.pagination.usersPerPage;
                 let end = begin + $scope.pagination.usersPerPage;
 
