@@ -69,6 +69,10 @@ input[type = search]::-webkit-search-cancel-button {
     padding-bottom: 25px;
 }
 
+.no-results {
+    font-family: sans-serif;
+}
+
 /* BUTTONS */
 
 button {
