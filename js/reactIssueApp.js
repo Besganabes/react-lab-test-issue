@@ -9,7 +9,16 @@ reactIssueApp.controller("reactIssueController", function ($scope, $http, $filte
         usersPerPage: 20,
         searchString: "",
         stateFilter: ""
-    }
+    };
+    $scope.tableSort = {
+        selectedSort: "",
+        id: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        state: ""
+    };
 
     $scope.init = function () {
         console.log("Initialization sequence...");
@@ -20,6 +29,29 @@ reactIssueApp.controller("reactIssueController", function ($scope, $http, $filte
             console.error(error.statusText);
         });
     };
+
+    $scope.toggleSort = function (field) {
+        switch (field) {
+            case "id":
+                $scope.tableSort.selectedSort = $scope.tableSort.id = $scope.tableSort.id === "" ? "id" : $scope.tableSort.id === "id" ? "-id" : "";
+                break;
+            case "firstName":
+                $scope.tableSort.selectedSort = $scope.tableSort.firstName = $scope.tableSort.firstName === "" ? "firstName" : $scope.tableSort.firstName === "-firstName" ? "" : "-firstName";
+                break;
+            case "lastName":
+                $scope.tableSort.selectedSort = $scope.tableSort.lastName = $scope.tableSort.lastName === "" ? "lastName" : $scope.tableSort.lastName === "-lastName" ? "" : "-lastName";
+                break;
+            case "email":
+                $scope.tableSort.selectedSort = $scope.tableSort.email = $scope.tableSort.email === "" ? "email" : $scope.tableSort.email === "-email" ? "" : "-email";
+                break;
+            case "phone":
+                $scope.tableSort.selectedSort = $scope.tableSort.phone = $scope.tableSort.phone === "" ? "phone" : $scope.tableSort.phone === "-phone" ? "" : "-phone";
+                break;
+            case "state":
+                $scope.tableSort.selectedSort = $scope.tableSort.state = $scope.tableSort.state === "" ? "adress.state" : $scope.tableSort.state === "-adress.state" ? "" : "-adress.state";
+                break;
+        }
+    }
 
     $scope.selectUser = function (user) {
         $scope.selectedUser = user;

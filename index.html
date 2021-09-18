@@ -22,15 +22,15 @@
         <table ng-if="getFilteredUsers().length > 0" class="users-table">
             <thead>
             <tr>
-                <td>ID</td>
-                <td>First name</td>
-                <td>Last name</td>
-                <td>Email</td>
-                <td>Phone</td>
-                <td>State</td>
+                <td ng-click="toggleSort('id')"><i>{{tableSort.selectedSort === 'id' ? '▲' : tableSort.selectedSort === '-id' ? '▼' : ''}}</i>ID</td>
+                <td ng-click="toggleSort('firstName')"><i>{{tableSort.selectedSort === 'firstName' ? '▲' : tableSort.selectedSort === '-firstName' ? '▼' : ''}}</i>First name</td>
+                <td ng-click="toggleSort('lastName')"><i>{{tableSort.selectedSort === 'lastName' ? '▲' : tableSort.selectedSort === '-lastName' ? '▼' : ''}}</i>Last name</td>
+                <td ng-click="toggleSort('email')"><i>{{tableSort.selectedSort === 'email' ? '▲' : tableSort.selectedSort === '-email' ? '▼' : ''}}</i>Email</td>
+                <td ng-click="toggleSort('phone')"><i>{{tableSort.selectedSort === 'phone' ? '▲' : tableSort.selectedSort === '-phone' ? '▼' : ''}}</i>Phone</td>
+                <td ng-click="toggleSort('state')"><i>{{tableSort.selectedSort === 'adress.state' ? '▲' : tableSort.selectedSort === '-adress.state' ? '▼' : ''}}</i>State</td>
             </tr>
             </thead>
-            <tr ng-repeat="user in getFilteredUsers() | offset: getOffset() | limitTo: pagination.usersPerPage" ng-click="selectUser(user); highlightSelectedRow($event)">
+            <tr ng-repeat="user in getFilteredUsers() | orderBy: tableSort.selectedSort | offset: getOffset() | limitTo: pagination.usersPerPage" ng-click="selectUser(user); highlightSelectedRow($event)">
                 <td>{{user.id}}</td>
                 <td>{{user.firstName}}</td>
                 <td>{{user.lastName}}</td>
