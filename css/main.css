@@ -7,10 +7,14 @@
     border-radius: 5px 5px 5px 5px;
 }
 
-input[type = text].toolbar, .search {
+input[type = search].toolbar, .search {
     width: 333px;
     margin-right: 15px;
     line-height: 33px;
+}
+
+input[type = search]::-webkit-search-cancel-button {
+    -webkit-appearance: searchfield-cancel-button;
 }
 
 select .toolbar, .dropdown {
