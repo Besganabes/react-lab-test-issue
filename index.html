@@ -14,6 +14,7 @@
         <div>
             <input type="search" ng-model="searchString" class="toolbar search" placeholder="Search everywhere:">
             <select ng-model="stateFilter" class="toolbar dropdown">
+                <option selected="selected" value="">All states</option>
                 <option ng-repeat="user in users | unique: 'adress.state' | orderBy: 'adress.state'" value="{{user.adress.state}}">{{user.adress.state}}</option>
             </select>
         </div>
