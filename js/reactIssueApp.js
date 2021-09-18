@@ -30,27 +30,43 @@ reactIssueApp.controller("reactIssueController", function ($scope, $http, $filte
         });
     };
 
-    $scope.toggleSort = function (field) {
-        switch (field) {
+    $scope.toggleSort = function (selectedSortField) {
+        let selectedSortOption;
+        switch (selectedSortField) {
             case "id":
-                $scope.tableSort.selectedSort = $scope.tableSort.id = $scope.tableSort.id === "" ? "id" : $scope.tableSort.id === "id" ? "-id" : "";
+                selectedSortOption = $scope.tableSort.id = $scope.tableSort.id === "" ? "id" : $scope.tableSort.id === "id" ? "-id" : "";
                 break;
             case "firstName":
-                $scope.tableSort.selectedSort = $scope.tableSort.firstName = $scope.tableSort.firstName === "" ? "firstName" : $scope.tableSort.firstName === "-firstName" ? "" : "-firstName";
+                selectedSortOption = $scope.tableSort.firstName = $scope.tableSort.firstName === "" ? "firstName" : $scope.tableSort.firstName === "-firstName" ? "" : "-firstName";
                 break;
             case "lastName":
-                $scope.tableSort.selectedSort = $scope.tableSort.lastName = $scope.tableSort.lastName === "" ? "lastName" : $scope.tableSort.lastName === "-lastName" ? "" : "-lastName";
+                selectedSortOption = $scope.tableSort.lastName = $scope.tableSort.lastName === "" ? "lastName" : $scope.tableSort.lastName === "-lastName" ? "" : "-lastName";
                 break;
             case "email":
-                $scope.tableSort.selectedSort = $scope.tableSort.email = $scope.tableSort.email === "" ? "email" : $scope.tableSort.email === "-email" ? "" : "-email";
+                selectedSortOption = $scope.tableSort.email = $scope.tableSort.email === "" ? "email" : $scope.tableSort.email === "-email" ? "" : "-email";
                 break;
             case "phone":
-                $scope.tableSort.selectedSort = $scope.tableSort.phone = $scope.tableSort.phone === "" ? "phone" : $scope.tableSort.phone === "-phone" ? "" : "-phone";
+                selectedSortOption = $scope.tableSort.phone = $scope.tableSort.phone === "" ? "phone" : $scope.tableSort.phone === "-phone" ? "" : "-phone";
                 break;
             case "state":
-                $scope.tableSort.selectedSort = $scope.tableSort.state = $scope.tableSort.state === "" ? "adress.state" : $scope.tableSort.state === "-adress.state" ? "" : "-adress.state";
+                selectedSortOption = $scope.tableSort.state = $scope.tableSort.state === "" ? "adress.state" : $scope.tableSort.state === "-adress.state" ? "" : "-adress.state";
                 break;
         }
+        $scope.resetAllOtherSortOptions(selectedSortField, selectedSortOption);
+    }
+
+    $scope.resetAllOtherSortOptions = function (selectedSortField, selectedSortOption) {
+        $scope.tableSort = {
+            selectedSort: "",
+            id: "",
+            firstName: "",
+            lastName: "",
+            email: "",
+            phone: "",
+            state: ""
+        };
+        $scope.tableSort.selectedSort = selectedSortOption;
+        $scope.tableSort[selectedSortField] = selectedSortOption;
     }
 
     $scope.selectUser = function (user) {
