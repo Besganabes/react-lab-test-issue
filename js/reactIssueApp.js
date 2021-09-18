@@ -40,7 +40,12 @@ reactIssueApp.controller("reactIssueController", function ($scope, $http, $filte
     };
 
     $scope.getFilteredUsers = function () {
-        return $filter('filter')($scope.users, $scope.pagination.searchString);
+        let filteredUsers = $filter('filter')($scope.users, $scope.pagination.searchString);
+        const stateFilter = $scope.pagination.stateFilter;
+        if (stateFilter) {
+            filteredUsers = $filter('filter')(filteredUsers, {adress: {state: $scope.pagination.stateFilter}});
+        }
+        return filteredUsers;
     };
 
     $scope.getOffset = function () {

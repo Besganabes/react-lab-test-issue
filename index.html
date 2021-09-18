@@ -47,7 +47,7 @@
             <button ng-disabled="nextButtonIsDisabled()" ng-click="selectAdjacentPage(true)" class="button">Next</button>
         </div>
         <div class="no-results" ng-hide="getFilteredUsers().length > 0">
-            <p>No results found for <b>{{pagination.searchString}}</b></p>
+            <p>No results found {{pagination.searchString ? "for " : ""}} <b>{{pagination.searchString}}</b> in <b>{{pagination.stateFilter ? pagination.stateFilter : "all states"}}</b></p>
         </div>
         <div ng-if="selectedUser" class="additional-info flex">
             <p><button ng-click="closeAdditionalInfo()">Close</button></p>
