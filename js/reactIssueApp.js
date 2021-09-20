@@ -167,7 +167,7 @@ reactIssueApp.controller("reactIssueController", function ($scope, $http, $filte
         }
     };
 
-    $scope.$watch("pagination.searchString", function () {
+    $scope.$watchGroup(["pagination.searchString", "pagination.stateFilter"], function () {
         $scope.pagination.currentPage = 1;
     });
 });
